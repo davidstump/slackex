@@ -15,6 +15,7 @@ defmodule Slackex.Channels do
   end
 
   @doc """
+  This method is used to create a channel.
   """
   def create(name) do
     params = %{name: name}
