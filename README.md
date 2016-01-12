@@ -22,6 +22,22 @@ Slackex can be installed as:
         end
 
 
+## Examples
+
+Just a few small examples to get you started. Details documentation is linked below.
+
+To list all of your Slack channels:
+
+```
+channels = Slackex.Channels.list
+```
+
+To create a new channel
+
+```
+new_channel = Slackex.Channels.create("My New Channel")
+```
+
 ## Documentation
 
 For more detailed documentation visit:
