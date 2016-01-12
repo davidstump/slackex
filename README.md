@@ -21,6 +21,8 @@ Slackex can be installed as:
           [applications: [:slackex]]
         end
 
+  3. Obtain a Slack token and set it as a System ENV as `SLACK_TOKEN`
+
 
 ## Examples
 
