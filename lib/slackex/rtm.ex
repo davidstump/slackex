@@ -9,6 +9,6 @@ defmodule Slackex.RTM do
   how to use the RTM API.
   """
   def start(options \\ %{}) do
-    Slackex.request("rtm.start", params)
+    Slackex.request("rtm.start", options)
   end
 end
