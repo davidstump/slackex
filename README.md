@@ -1,10 +1,13 @@
 # Slackex
 
-**TODO: Add description**
+A Slack wrapper for Elixir
+Requires an active account with Slack (http://slack.com).
+
+Provides a wrapper for every API endpoint listed in the [official slack developer documentation](https://api.slack.com/web)
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+Slackex can be installed as:
 
   1. Add slackex to your list of dependencies in `mix.exs`:
 
@@ -18,3 +21,9 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
           [applications: [:slackex]]
         end
 
+
+## Documentation
+
+For more detailed documentation visit:
+    - Hex Docs: [http://hexdocs.pm/slackex](http://hexdocs.pm/slackex)
+    - Slack API Methods: [https://api.slack.com/methods](https://api.slack.com/methods)

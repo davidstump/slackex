@@ -32,7 +32,9 @@ defmodule Slackex.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 0.8"},
-      {:exjsx, "~> 3.2.0", app: false}
+      {:exjsx, "~> 3.2.0", app: false},
+      {:earmark, "~> 0.1", only: :dev},
+      {:ex_doc, "~> 0.11", only: :dev}
     ]
   end
 
@@ -45,7 +47,7 @@ defmodule Slackex.Mixfile do
 
   defp package do
     [ files: [ "lib", "mix.exs", "README.md", "LICENSE" ],
-      contributors: [ "David Stump" ],
+      maintainers: [ "David Stump" ],
       licenses: [ "MIT" ],
       links: %{ "GitHub" => "https://github.com/davidstump/slackex" } ]
   end
