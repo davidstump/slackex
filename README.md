@@ -25,5 +25,6 @@ Slackex can be installed as:
 ## Documentation
 
 For more detailed documentation visit:
-    - Hex Docs: [http://hexdocs.pm/slackex](http://hexdocs.pm/slackex)
-    - Slack API Methods: [https://api.slack.com/methods](https://api.slack.com/methods)
+
+* Slackex Documentation: [http://hexdocs.pm/slackex](http://hexdocs.pm/slackex)
+* Slack API Methods: [https://api.slack.com/methods](https://api.slack.com/methods)
