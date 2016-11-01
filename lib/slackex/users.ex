@@ -8,16 +8,16 @@ defmodule Slackex.Users do
   a user's presence. Consult the presence documentation
   for more details.
   """
-  def get_presence(user) do
-    params = %{user: user}
+  def get_presence(user, options \\ %{}) do
+    params = options |> Map.merge(%{user: user})
     Slackex.request("users.getPresence", params)
   end
 
   @doc """
   This method returns information about a team member.
   """
-  def info(user) do
-    params = %{user: user}
+  def info(user, options \\ %{}) do
+    params = options |> Map.merge(%{user: user})
     Slackex.request("users.info", params)
   end
 
@@ -34,16 +34,16 @@ defmodule Slackex.Users do
   authenticated user is currently active. Consult the
   presence documentation for more details.
   """
-  def set_active do
-    Slackex.request("users.setActive")
+  def set_active(options \\ %{}) do
+    Slackex.request("users.setActive", options)
   end
 
   @doc """
   This method lets you set the calling user's manual presence.
   Consult the presence documentation for more details.
   """
-  def set_presence(presence) do
-    params = %{presence: presence}
+  def set_presence(presence, options \\ %{}) do
+    params = options |> Map.merge(%{presence: presence})
     Slackex.request("users.setPresence", params)
   end
 end

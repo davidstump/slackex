@@ -36,15 +36,24 @@ defmodule Slackex do
   Args:
     * endpoint - string requested API endpoint
     * body - request body
+  Uses token if provided, otherwise uses the one from the env / config
   Returns dict
   """
-  def request(endpoint, body \\ %{}) do
+
+  def request(endpoint, body \\ %{})
+
+  def request(endpoint, %{token: _} = body) do
     Slackex.get!(
       endpoint,
       headers,
-      [params: params_with_auth(body)]
-    ).body
+      params: body
+    ).body    
   end
+
+  def request(endpoint, body) do
+    request(endpoint, Dict.put(body, :token, Slackex.token))
+  end
+  
 
   @doc """
   Includes user Slack token with params

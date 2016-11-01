@@ -6,8 +6,8 @@ defmodule Slackex.MPIM do
   @doc """
   Get info on your multiparty direct messages.
   """
-  def close(channel) do
-    params = %{channel: channel}
+  def close(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("mpim.close", params)
   end
 
@@ -20,7 +20,7 @@ defmodule Slackex.MPIM do
   instructions below.
   """
   def history(channel, options \\ %{}) do
-    params = [channel: channel] |> Enum.concat(options)
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("mpim.history", params)
   end
 
@@ -28,16 +28,16 @@ defmodule Slackex.MPIM do
   This method returns a list of all multiparty direct
   message channels that the user has.
   """
-  def list do
-    Slackex.request("mpim.list")
+  def list(options \\ %{}) do
+    Slackex.request("mpim.list", options)
   end
 
   @doc """
   This method moves the read cursor in a multiparty
   direct message channel.
   """
-  def mark(channel, timestamp) do
-    params = %{channel: channel, ts: timestamp}
+  def mark(channel, timestamp, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, ts: timestamp})
     Slackex.request("mpim.mark", params)
   end
 
@@ -51,8 +51,8 @@ defmodule Slackex.MPIM do
   with the same set of users will return the already
   existing MPIM conversation.
   """
-  def open(users) do
-    params = %{users: users}
+  def open(users, options \\ %{}) do
+    params = options |> Map.merge(%{users: users})
     Slackex.request("mpim.open", params)
   end
 end

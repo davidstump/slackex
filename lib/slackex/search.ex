@@ -8,7 +8,7 @@ defmodule Slackex.Search do
   and files in a single call.
   """
   def all(query, options \\ %{}) do
-    params = [query: query] |> Enum.concat(options)
+    params = options |> Map.merge(%{query: query})    
     Slackex.request("search.all", params)
   end
 
@@ -16,7 +16,7 @@ defmodule Slackex.Search do
   This method returns files matching a search query.
   """
   def files(query, options \\ %{}) do
-    params = [query: query] |> Enum.concat(options)
+    params = options |> Map.merge(%{query: query})    
     Slackex.request("search.files", params)
   end
 
@@ -24,7 +24,7 @@ defmodule Slackex.Search do
   This method returns messages matching a search query.
   """
   def messages(query, options \\ %{}) do
-    params = [query: query] |> Enum.concat(options)
+    params = options |> Map.merge(%{query: query})    
     Slackex.request("search.messages", params)
   end
 end

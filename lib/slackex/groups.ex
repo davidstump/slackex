@@ -6,24 +6,24 @@ defmodule Slackex.Groups do
   @doc """
   This method archives a private channel.
   """
-  def archive(channel) do
-    params = %{channel: channel}
+  def archive(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("groups.archive", params)
   end
 
   @doc """
   This method closes a private channel.
   """
-  def close(channel) do
-    params = %{channel: channel}
+  def close(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("groups.close", params)
   end
 
   @doc """
   This method creates a private channel.
   """
-  def create(name) do
-    params = %{name: name}
+  def create(name, options \\ %{}) do
+    params = options |> Map.merge(%{name: name})
     Slackex.request("groups.create", params)
   end
 
@@ -49,8 +49,8 @@ defmodule Slackex.Groups do
   This will only be returned for members of both private channels,
   so will not be visible to any newly invited members.
   """
-  def create_child(channel) do
-    params = %{channel: channel}
+  def create_child(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("groups.createChild", params)
   end
 
@@ -62,15 +62,15 @@ defmodule Slackex.Groups do
   below.
   """
   def history(channel, options \\ %{}) do
-    params = [channel: channel] |> Enum.concat(options)
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("groups.history", params)
   end
 
   @doc """
   This method returns information about a private channel.
   """
-  def info(channel) do
-    params = %{channel: channel}
+  def info(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("groups.info", params)
   end
 
@@ -82,8 +82,8 @@ defmodule Slackex.Groups do
   them access to the archives of the private channel, call
   the groups.createChild method before inviting.
   """
-  def invite(channel, user) do
-    params = %{channel: channel, user: user}
+  def invite(channel, user, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, user: user})
     Slackex.request("groups.invite", params)
   end
 
@@ -91,16 +91,16 @@ defmodule Slackex.Groups do
   This method allows a user to remove another member from a
   private channel.
   """
-  def kick(channel, user) do
-    params = %{channel: channel, user: user}
+  def kick(channel, user, options \\ %{}) do
+    params = options |> Map.merge( %{channel: channel, user: user})
     Slackex.request("groups.kick", params)
   end
 
   @doc """
   This method is used to leave a private channel.
   """
-  def leave(channel) do
-    params = %{channel: channel}
+  def leave(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("groups.leave", params)
   end
 
@@ -117,24 +117,24 @@ defmodule Slackex.Groups do
   @doc """
   This method moves the read cursor in a private channel.
   """
-  def mark(channel, timestamp) do
-    params = %{channel: channel, ts: timestamp}
+  def mark(channel, timestamp, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, ts: timestamp})
     Slackex.request("groups.mark", params)
   end
 
   @doc """
   This method opens a private channel.
   """
-  def open(channel) do
-    params = %{channel: channel}
+  def open(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("groups.open", params)
   end
 
   @doc """
   This method renames a private channel.
   """
-  def rename(channel, name) do
-    params = %{channel: channel, name: name}
+  def rename(channel, name, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, name: name})
     Slackex.request("groups.rename", params)
   end
 
@@ -143,8 +143,8 @@ defmodule Slackex.Groups do
   private channel. The calling user must be a member
   of the private channel.
   """
-  def set_purpose(channel, purpose) do
-    params = %{channel: channel, purpose: purpose}
+  def set_purpose(channel, purpose, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, purpose: purpose})
     Slackex.request("groups.setPurpose", params)
   end
 
@@ -153,16 +153,16 @@ defmodule Slackex.Groups do
   channel. The calling user must be a member of the
   private channel.
   """
-  def set_topic(channel, topic) do
-    params = %{channel: channel, topic: topic}
+  def set_topic(channel, topic, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, topic: topic})
     Slackex.request("groups.setTopic", params)
   end
 
   @doc """
   This method unarchives a private channel.
   """
-  def unarchive(channel) do
-    params = %{channel: channel}
+  def unarchive(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("groups.unarchive", params)
   end
 end

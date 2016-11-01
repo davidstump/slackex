@@ -7,15 +7,15 @@ defmodule Slackex.DoNotDisturb do
   @doc """
   Ends the user's currently scheduled Do Not Disturb session immediately.
   """
-  def end_dnd do
-    Slackex.request("dnd.endDnd")
+  def end_dnd(options \\ %{}) do
+    Slackex.request("dnd.endDnd", options)
   end
 
   @doc """
   Ends the current user's snooze mode immediately.
   """
-  def end_snooze do
-    Slackex.request("dnd.endSnooze")
+  def end_snooze(options \\ %{}) do
+    Slackex.request("dnd.endSnooze", options)
   end
 
   @doc """
@@ -32,8 +32,8 @@ defmodule Slackex.DoNotDisturb do
   already active for the user, invoking this method
   will begin one for the specified duration.
   """
-  def set_snooze(num_minutes) do
-    params = %{num_minutes: num_minutes}
+  def set_snooze(num_minutes, options \\ %{}) do
+    params = options |> Map.merge(%{num_minutes: num_minutes})
     Slackex.request("dnd.setSnooze", params)
   end
 

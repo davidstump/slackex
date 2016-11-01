@@ -8,7 +8,7 @@ defmodule Slackex.UserGroups.Users do
   a user group.
   """
   def list(usergroup, options \\ %{}) do
-    params = [usergroup: usergroup] |> Enum.concat(options)
+    params = options |> Map.merge(%{usergroup: usergroup})
     Slackex.request("usergroup.users.list", params)
   end
 
@@ -19,10 +19,10 @@ defmodule Slackex.UserGroups.Users do
   parameter.
   """
   def update(usergroup, users, options \\ %{}) do
-    params = [
+    params = options |> Map.merge(%{
       usergroup: usergroup,
       users: users,
-    ] |> Enum.concat(options)
+    })
 
     Slackex.request("usergroups.users.update", params)
   end

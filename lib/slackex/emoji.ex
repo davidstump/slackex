@@ -6,7 +6,7 @@ defmodule Slackex.Emoji do
   @doc """
   This method lists the custom emoji for a team.
   """
-  def list do
-    Slackex.request("emoji.list")
+  def list(options \\ %{}) do
+    Slackex.request("emoji.list", options)
   end
 end

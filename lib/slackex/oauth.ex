@@ -15,11 +15,11 @@ defmodule Slackex.OAuth do
   client_secret parameters as part of the request.
   """
   def access(client_id, client_secret, code, options \\ %{}) do
-    params = [
+    params = options |> Map.merge(%{
       client_id: client_id,
       client_secret: client_secret,
       code: code
-    ] |> Enum.concat(options)
+    })
 
     Slackex.request("oauth.access", params)
   end
