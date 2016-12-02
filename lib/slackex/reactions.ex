@@ -11,7 +11,7 @@ defmodule Slackex.Reactions do
   specified.
   """
   def add(name, options \\ %{}) do
-    params = [name: name] |> Enum.concat(options)
+    params = options |> Map.merge(%{name: name})    
     Slackex.request("reactions.add", params)
   end
 
@@ -40,7 +40,7 @@ defmodule Slackex.Reactions do
   channel and timestamp must be specified.
   """
   def remove(name, options \\ %{}) do
-    params = [name: name] |> Enum.concat(options)
+    params = options |> Map.merge(%{name: name})
     Slackex.request("reactions.remove", params)
   end
 end

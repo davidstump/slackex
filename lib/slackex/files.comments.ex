@@ -6,8 +6,8 @@ defmodule Slackex.Files.Comments do
   @doc """
   Add a comment to an existing file.
   """
-  def add(file, comment) do
-    params = %{file: file, comment: comment}
+  def add(file, comment, options \\ %{}) do
+    params = options |> Map.merge(%{file: file, comment: comment})
     Slackex.request("files.comments.add", params)
   end
 
@@ -16,8 +16,8 @@ defmodule Slackex.Files.Comments do
   original author of the comment or a team
   administrator may delete a file comment.
   """
-  def delete(file, id) do
-    params = %{file: file, id: id}
+  def delete(file, id, options \\ %{}) do
+    params = options |> Map.merge(%{file: file, id: id})
     Slackex.request("files.comments.delete", params)
   end
 
@@ -27,8 +27,8 @@ defmodule Slackex.Files.Comments do
   a limited time window during which file comment edits
   are allowed.
   """
-  def edit(file, id, comment) do
-    params = %{file: file, id: id, comment: comment}
+  def edit(file, id, comment, options \\ %{}) do
+    params = options |> Map.merge(%{file: file, id: id, comment: comment})
     Slackex.request("files.comments.edit", params)
   end
 end

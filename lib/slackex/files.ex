@@ -7,8 +7,8 @@ defmodule Slackex.Files do
   @doc """
   This method deletes a file from your team.
   """
-  def delete(file) do
-    params = %{file: file}
+  def delete(file, options \\ %{}) do
+    params = options |> Map.merge(%{file: file})
     Slackex.request("files.delete", params)
   end
 
@@ -17,7 +17,7 @@ defmodule Slackex.Files do
   your team.
   """
   def info(file, options \\ %{}) do
-    params = [file: file] |> Enum.concat(options)
+    params = options |> Map.merge(%{file: file})
     Slackex.request("files.info", params)
   end
 
@@ -33,7 +33,7 @@ defmodule Slackex.Files do
   This method allows you to create or upload an existing file.
   """
   def upload(file, options \\ %{}) do
-    params = [file: file] |> Enum.concat(options)
+    params = options |> Map.merge(%{file: file})
     Slackex.request("files.upload", params)
   end
 end

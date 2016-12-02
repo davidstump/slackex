@@ -10,15 +10,15 @@ defmodule Slackex.Pins do
   file_comment, or timestamp must also be specified.
   """
   def add(channel, options \\ %{}) do
-    params = [channel: channel] |> Enum.concat(options)
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("pins.add", params)
   end
 
   @doc """
   This method lists the items pinned to a channel.
   """
-  def list(channel) do
-    params = %{channel: channel}
+  def list(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("pins.list", params)
   end
 
@@ -29,7 +29,7 @@ defmodule Slackex.Pins do
   file_comment, or timestamp must also be specified.
   """
   def remove(channel, options \\ %{}) do
-    params = [channel: channel] |> Enum.concat(options)
+    params = options |> Map.merge(%{channel: channel})    
     Slackex.request("pins.remove", params)
   end
 end

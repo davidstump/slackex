@@ -14,8 +14,8 @@ defmodule Slackex.Team do
   @doc """
   This method provides information about your team.
   """
-  def info do
-    Slackex.request("team.info")
+  def info(options \\ %{})do
+    Slackex.request("team.info", options)
   end
 
   @doc """

@@ -6,8 +6,8 @@ defmodule Slackex.IM do
   @doc """
   This method closes a direct message channel.
   """
-  def close(channel) do
-    params = %{channel: channel}
+  def close(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("im.close", params)
   end
 
@@ -19,7 +19,7 @@ defmodule Slackex.IM do
   then continue paging using the instructions below.
   """
   def history(channel, options \\ %{}) do
-    params = [channel: channel] |> Enum.concat(options)
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("im.history", params)
   end
 
@@ -27,16 +27,16 @@ defmodule Slackex.IM do
   This method returns a list of all im channels that
   the user has.
   """
-  def list do
-    Slackex.request("im.list")
+  def list(options \\ %{}) do
+    Slackex.request("im.list", options)
   end
 
   @doc """
   This method moves the read cursor in a direct message
   channel.
   """
-  def mark(channel, timestamp) do
-    params = %{channel: channel, ts: timestamp}
+  def mark(channel, timestamp, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, ts: timestamp})
     Slackex.request("im.mark", params)
   end
 
@@ -44,8 +44,8 @@ defmodule Slackex.IM do
   This method opens a direct message channel with
   another member of your Slack team.
   """
-  def open(user) do
-    params = %{user: user}
+  def open(user, options \\ %{}) do
+    params = options |> Map.merge(%{user: user})
     Slackex.request("im.open", params)
   end
 end

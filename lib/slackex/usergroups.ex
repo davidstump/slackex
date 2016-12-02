@@ -7,7 +7,7 @@ defmodule Slackex.UserGroups do
   This method is used to create a user group.
   """
   def create(name, options) do
-    params = [name: name] |> Enum.concat(options)
+    params = options |> Map.merge(%{name: name})
     Slackex.request("usergroups.create", params)
   end
 
@@ -15,7 +15,7 @@ defmodule Slackex.UserGroups do
   This method disables an existing user group.
   """
   def disable(usergroup, options \\ %{}) do
-    params = [usergroup: usergroup] |> Enum.concat(options)
+    params = options |> Map.merge(%{usergroup: usergroup})
     Slackex.request("usergroups.disable", params)
   end
 
@@ -24,7 +24,7 @@ defmodule Slackex.UserGroups do
   previously disabled.
   """
   def enable(usergroup, options \\ %{}) do
-    params = [usergroup: usergroup] |> Enum.concat(options)
+    params = options |> Map.merge(%{usergroup: usergroup})
     Slackex.request("usergroup.enable", params)
   end
 
@@ -41,7 +41,7 @@ defmodule Slackex.UserGroups do
   user group.
   """
   def update(usergroup, options \\ %{}) do
-    params = [usergroup: usergroup] |> Enum.concat(options)
+    params = options |> Map.merge(%{usergroup: usergroup})
     Slackex.request("usergroups.update", params)
   end
 end

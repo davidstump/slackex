@@ -9,16 +9,16 @@ defmodule Slackex.Channels do
   @doc """
   This method archives a channel.
   """
-  def archive(channel) do
-    params = %{channel: channel}
+  def archive(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})    
     Slackex.request("channels.archive", params)
   end
 
   @doc """
   This method is used to create a channel.
   """
-  def create(name) do
-    params = %{name: name}
+  def create(name, options \\ %{}) do
+    params = options |> Map.merge(%{name: name})    
     Slackex.request("channels.create", params)
   end
 
@@ -30,22 +30,22 @@ defmodule Slackex.Channels do
   using the instructions below.
   """
   def history(channel, options \\ %{}) do
-    params = Enum.concat([channel: channel], options)
+    params = options |> Map.merge(%{channel: channel})        
     Slackex.request("channels.history", params)
   end
 
   @doc """
   """
-  def info(channel) do
-    params = %{channel: channel}
+  def info(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})    
     Slackex.request("channels.info", params)
   end
   @doc """
   This method is used to invite a user to a channel.
   The calling user must be a member of the channel.
   """
-  def invite(channel, user) do
-    params = %{channel: channel, user: user}
+  def invite(channel, user, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, user: user})
     Slackex.request("channels.invite", params)
   end
 
@@ -53,8 +53,8 @@ defmodule Slackex.Channels do
   This method is used to join a channel. If the
   channel does not exist, it is created.
   """
-  def join(name) do
-    params = %{name: name}
+  def join(name, options \\ %{}) do
+    params = options |> Map.merge(%{name: name})
     Slackex.request("channels.join", params)
   end
 
@@ -62,16 +62,16 @@ defmodule Slackex.Channels do
   This method allows a user to remove another member
   from a team channel.
   """
-  def kick(channel, user) do
-    params = %{channel: channel, user: user}
+  def kick(channel, user, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, user: user})    
     Slackex.request("channels.kick", params)
   end
 
   @doc """
   This method is used to leave a channel.
   """
-  def leave(channel) do
-    params = %{channel: channel}
+  def leave(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("channels.leave", params)
   end
 
@@ -85,15 +85,15 @@ defmodule Slackex.Channels do
 
   To retrieve a list of private channels, use groups.list
   """
-  def list do
-    Slackex.request("channels.list")
+  def list(options \\ %{}) do
+    Slackex.request("channels.list", options)
   end
 
   @doc """
   This method moves the read cursor in a channel.
   """
-  def mark(channel, timestamp) do
-    params = %{channel: channel, ts: timestamp}
+  def mark(channel, timestamp, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, ts: timestamp})
     Slackex.request("channels.mark", params)
   end
 
@@ -105,8 +105,8 @@ defmodule Slackex.Channels do
   channel. Others will receive a "not_authorized"
   error.
   """
-  def rename(channel, new_name) do
-    params = %{channel: channel, name: new_name}
+  def rename(channel, new_name, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, name: new_name})
     Slackex.request("channels.rename", params)
   end
 
@@ -115,8 +115,8 @@ defmodule Slackex.Channels do
   channel. The calling user must be a member of
   the channel.
   """
-  def set_purpose(channel, purpose) do
-    params = %{channel: channel, purpose: purpose}
+  def set_purpose(channel, purpose, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, purpose: purpose})
     Slackex.request("channels.setPurpose", params)
   end
 
@@ -125,8 +125,8 @@ defmodule Slackex.Channels do
   channel. The calling user must be a member of
   the channel.
   """
-  def set_topic(channel, topic) do
-    params = %{channel: channel, topic: topic}
+  def set_topic(channel, topic, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel, topic: topic})
     Slackex.request("channels.setTopic", params)
   end
 
@@ -134,8 +134,8 @@ defmodule Slackex.Channels do
   This method unarchives a channel. The calling
   user is added to the channel.
   """
-  def unarchive(channel) do
-    params = %{channel: channel}
+  def unarchive(channel, options \\ %{}) do
+    params = options |> Map.merge(%{channel: channel})
     Slackex.request("channels.unarchive", params)
   end
 end

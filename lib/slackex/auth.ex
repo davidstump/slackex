@@ -8,7 +8,7 @@ defmodule Slackex.Auth do
   the user who they are.
   """
 
-  def test do
-    Slackex.request("auth.test")
+  def test(options \\ %{}) do
+    Slackex.request("auth.test", options)
   end
 end
