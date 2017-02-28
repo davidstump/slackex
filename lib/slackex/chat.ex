@@ -27,7 +27,7 @@ defmodule Slackex.Chat do
   @doc """
   This method updates a message in a channel.
   """
-  def update(channel, timestamp, text, options \\ %{}) do
+  def update(channel, timestamp, _text, options \\ %{}) do
     params = options |> Map.merge(%{
       channel: channel,
       timestamp: timestamp,

@@ -45,21 +45,21 @@ defmodule Slackex do
   def request(endpoint, %{token: _} = body) do
     Slackex.get!(
       endpoint,
-      headers,
+      headers(),
       params: body
-    ).body    
+    ).body
   end
 
   def request(endpoint, body) do
-    request(endpoint, Dict.put(body, :token, Slackex.token))
+    request(endpoint, Map.put(body, :token, Slackex.token))
   end
-  
+
 
   @doc """
   Includes user Slack token with params
   """
   def params_with_auth(body) do
-    Dict.put(body, :token, Slackex.token)
+    Map.put(body, :token, Slackex.token)
   end
 
   @doc """
