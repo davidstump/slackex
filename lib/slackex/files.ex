@@ -32,8 +32,7 @@ defmodule Slackex.Files do
   @doc """
   This method allows you to create or upload an existing file.
   """
-  def upload(file, options \\ %{}) do
-    params = options |> Map.merge(%{file: file})
-    Slackex.request("files.upload", params)
+  def upload(options \\ %{}) do
+    Slackex.request("files.upload", options, :post_file)
   end
 end
