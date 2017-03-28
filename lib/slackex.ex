@@ -40,9 +40,9 @@ defmodule Slackex do
   Returns dict
   """
 
-  def request(endpoint, body \\ %{})
+  def request(endpoint, body \\ %{}, method \\ :get)
 
-  def request(endpoint, %{token: _} = body) do
+  def request(endpoint, %{token: _} = body, :get) do
     Slackex.get!(
       endpoint,
       headers(),
@@ -50,8 +50,20 @@ defmodule Slackex do
     ).body
   end
 
-  def request(endpoint, body) do
-    request(endpoint, Map.put(body, :token, Slackex.token))
+  def request(endpoint, %{token: _} = params, :post_file) do
+    Slackex.post!(
+      endpoint,
+      {:form, Map.to_list(params)},
+      [] # Hackney handles form headers for us
+    ).body
+  end
+
+  def request(_endpoint, %{token: _}, _method) do
+    raise :unsupported_method
+  end
+
+  def request(endpoint, body, method) do
+    request(endpoint, Map.put(body, :token, Slackex.token), method)
   end
 
 
